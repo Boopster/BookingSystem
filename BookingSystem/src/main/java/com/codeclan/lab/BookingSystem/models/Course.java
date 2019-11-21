@@ -43,7 +43,7 @@ public class Course {
     )
     private List<Booking> bookings;
 
-    public Course(String name, String town, String date) {
+    public Course(String name, String town, int starRating, String date) {
         this. name = name;
         this.town = town.toLowerCase();
         this.starRating = starRating;

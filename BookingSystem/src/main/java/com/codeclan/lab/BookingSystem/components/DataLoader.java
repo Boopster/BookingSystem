@@ -29,10 +29,10 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args) {
 
-        Course course1 = new Course("Professional Software Development", "Glasgow", "06-01-20");
+        Course course1 = new Course("Professional Software Development", "Glasgow", 5, "06-01-20");
         courseRepository.save(course1);
 
-        Course course2 = new Course("Professional Software Development", "Edinburgh", "13-01-20");
+        Course course2 = new Course("Professional Software Development", "Edinburgh", 5, "13-01-20");
         courseRepository.save(course2);
 
         Customer customer1 = new Customer("Jane Doe", "Glasgow", 30);
