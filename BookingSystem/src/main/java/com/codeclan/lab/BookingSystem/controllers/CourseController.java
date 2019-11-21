@@ -21,6 +21,8 @@ public class CourseController {
         return courseRepository.getByStarRating(starRating);
     }
 
+
+
 //    @GetMapping(value="distillery/{id}/age/{age}")
 //    public List<Whisky> getByDistilleryIdAndAge(@PathVariable Long id, @PathVariable int age) {
 //        return whiskyRepository.getByDistilleryIdAndAge(id, age);
