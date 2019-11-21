@@ -1,5 +1,7 @@
 package com.codeclan.lab.BookingSystem.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,33 +12,37 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "course_id")
-    private Long course_id;
+    @ManyToOne
+    @JsonIgnoreProperties("bookings")
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
 
-    @Column(name = "customer_id")
-    private Long customer_id;
+    @ManyToOne
+    @JsonIgnoreProperties("bookings")
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
 
-    public Booking(Long course_id, Long customer_id) {
-        this.course_id = course_id;
-        this.customer_id = customer_id;
+    public Booking(Course course, Customer customer) {
+        this.course = course;
+        this.customer = customer;
     }
 
     public Booking() {
     }
 
-    public Long getCourse_id() {
-        return this.course_id;
+    public Course getCourse() {
+        return this.course;
     }
 
-    public void setCourse_id(Long course_id) {
-        this.course_id = course_id;
+    public void setCourse_id(Course course) {
+        this.course = course;
     }
 
-    public Long getCustomer_id() {
-        return this.customer_id;
+    public Customer getCustomer() {
+        return this.customer;
     }
 
-    public void setCustomer_id(Long customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }
