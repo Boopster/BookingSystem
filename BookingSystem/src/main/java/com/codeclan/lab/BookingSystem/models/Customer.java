@@ -1,13 +1,43 @@
 package com.codeclan.lab.BookingSystem.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "customers")
 public class Customer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "town")
     private String town;
+
+    @Column(name = "age")
     private int age;
+
+    @JsonIgnoreProperties(value = "customers")
+    @ManyToMany
+    @JoinTable(
+            name = "bookings",
+            joinColumns = { @JoinColumn(
+                    name = "customer_id",
+                    nullable = false,
+                    updatable = false)
+            },
+            inverseJoinColumns = { @JoinColumn(
+                    name = "course_id",
+                    nullable = false,
+                    updatable = false)
+            }
+    )
     private List<Booking> bookings;
 
     public Customer(String name, String town, int age) {

@@ -1,8 +1,19 @@
 package com.codeclan.lab.BookingSystem.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "bookings")
 public class Booking {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "course_id")
     private Long course_id;
+
+    @Column(name = "customer_id")
     private Long customer_id;
 
     public Booking(Long course_id, Long customer_id) {
